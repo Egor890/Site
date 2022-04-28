@@ -6,20 +6,23 @@
     <div class="card" v-for="user in users" :key="user.id.value">
       <div class="header">
       <img class="photo card-element" :src="user.picture.thumbnail" alt="photo" />
-       <div class="header_name">{{ user.name.first }} {{ user.name.last }}</div> 
+       <div class="header_name"> {{ user.name.title }}.{{ user.name.first }} {{ user.name.last }}</div> 
       </div>
 
       <div>
-        {{ user.name.title }}.
-        {{ user.name.first }}
+       
+        
         
       </div>
     <div class="Address card-element">
+    Sex: {{user.gender}}<br>
     Address: {{user.location.country}},{{user.location.city}},{{user.location.street.name}}
     {{user.location.street.number}}
     </div>
-    Phone number: {{user.phone}}<br>
-      email: <a href="#">{{ user.email }}</a>
+	
+&phone;: {{user.phone}}<br>
+      	
+Email: <a href="#">{{ user.email }}</a>
       <div class="card-element">Age: {{user.registered.age}}</div>
     </div>
   </div>
