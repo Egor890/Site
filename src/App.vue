@@ -8,27 +8,31 @@
       <img class="photo card-element" :src="user.picture.thumbnail" alt="photo" />
        <div class="header_name"> {{ user.name.title }}.{{ user.name.first }} {{ user.name.last }}</div> 
       </div>
+  <div class="Card_info">
+    
 
-      <div>
-       
+        <li class="card-element">Sex: {{user.gender}}</li>
         
-        
-      </div>
-    <div class="Address card-element">
-    Sex: {{user.gender}}<br>
-    Address: {{user.location.country}},{{user.location.city}},{{user.location.street.name}}
+        <li class="card-element age">Age: {{user.registered.age}}</li>
+     <div class="fullDate card-element">Birthday: {{new Date(user.registered.date).getDate(user.registered.date)+'.'+ (new Date(user.registered.date).getMonth(user.registered.date)+1)+'.'+ new Date(user.registered.date).getFullYear(user.registered.date)+' '}}</div>
+
+        <div class="card-element">
+      Address: {{user.location.country}},{{user.location.city}},{{user.location.street.name}}
     {{user.location.street.number}}
+    
     </div>
-	
-&phone;: {{user.phone}}<br>
+	&phone;: {{user.phone}}
+
       	
-Email: <a href="#">{{ user.email }}</a>
-      <div class="card-element">Age: {{user.registered.age}}</div>
+<br>Email: <a href="#">{{ user.email }}</a>
+      <div class="card-element"></div>
+    </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'App',
   components: {},
@@ -36,8 +40,20 @@ export default {
   data() {
     return {
       users: [],
+      
     };
   },
+
+ 
+    
+    computed: {
+        localeDate() {
+           
+            return (new Date(this.date)).toLocaleDateString() 
+        },
+    },
+
+   
 
   mounted() {
     fetch('https://randomuser.me/api/?results=10')
@@ -50,6 +66,7 @@ export default {
       });
   },
 };
+
 </script>
 
 <style>
@@ -101,6 +118,12 @@ export default {
 a{
 color:black;
 text-decoration:none;
+}
+.Card_info{
+  
+  align-items:flex-start;
+  display:flex;
+  flex-direction:column;
 }
 </style>
 
